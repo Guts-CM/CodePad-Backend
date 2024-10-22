@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/zeuscm/Documentos/Mugen Tsukuyomi 艾/CodePad-Backend/venv"
+set -gx VIRTUAL_ENV "/home/zcapetillom/Documentos/Mugen Tsukuyomi  無/CodePad-Backend/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

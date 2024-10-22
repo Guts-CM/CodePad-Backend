@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/zeuscm/Documentos/Mugen Tsukuyomi 艾/CodePad-Backend/venv/bin/python3" "$0" "$@"
+'''exec' "/home/zcapetillom/Documentos/Mugen Tsukuyomi  無/CodePad-Backend/venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
