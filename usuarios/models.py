@@ -27,7 +27,7 @@ class Usuarios(AbstractBaseUser, PermissionsMixin):
     correo = models.EmailField(max_length=50, unique=True)
     password = models.CharField(max_length=500)
     pista_password = models.CharField(max_length=80)
-    activo = models.BooleanField(null=True)  # Puedes cambiar a default=True si todos los usuarios son activos por defecto
+    is_active = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     ultimo_acceso = models.DateTimeField(null=True, blank=True)
 

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Usuarios
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,3 +20,18 @@ class UsuarioSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+# Serializador personalizado para el token
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Agrega el campo usuarios_id en lugar de user_id
+        token['usuarios_id'] = user.usuarios_id
+
+        # Elimina el campo user_id
+        if 'user_id' in token:
+            del token['user_id']
+
+        return token

@@ -162,3 +162,5 @@ AUTHENTICATION_BACKENDS = [
     'usuarios.backends.CustomUserBackend',  # Tu backend personalizado
     'django.contrib.auth.backends.ModelBackend',  # El backend predeterminado
 ]
+
+AUTH_USER_MODEL = 'usuarios.Usuarios'

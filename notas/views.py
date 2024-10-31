@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # POST - Crea un nuevo registro.
 class NotasCreateView(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request):
         serializer = NotasSerializer(data=request.data)  # Deserializa los datos entrantes
         if serializer.is_valid():  # Si los datos son válidos
@@ -17,12 +18,14 @@ class NotasCreateView(APIView):
 
 # GET - Obtener datos.
 class NotasListView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         notas = Notas.objects.all()  # Recupera todas las notas
         serializer = NotasSerializer(notas, many=True)  # Serializa las notas
         return Response(serializer.data)
 
 class NotasDetailView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         nota = get_object_or_404(Notas, pk=pk)  # Maneja automáticamente el error 404 si no encuentra la nota
         serializer = NotasSerializer(nota)
@@ -30,6 +33,7 @@ class NotasDetailView(APIView):
 
 # PUT - Actualizar registros.
 class NotasUpdateView(APIView):
+    permission_classes = [IsAuthenticated]
     def put(self, request, pk):
         nota = get_object_or_404(Notas, pk=pk)  # Busca o retorna un 404 si no existe
         serializer = NotasSerializer(nota, data=request.data)  # Deserializa y actualiza
@@ -40,6 +44,7 @@ class NotasUpdateView(APIView):
 
 # DELETE - Eliminar registros.
 class NotasDeleteView(APIView):
+    permission_classes = [IsAuthenticated]
     def delete(self, request, pk):
         nota = get_object_or_404(Notas, pk=pk)  # Maneja automáticamente el error 404 si no encuentra la nota
         nota.delete()

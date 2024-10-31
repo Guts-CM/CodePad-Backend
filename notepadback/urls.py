@@ -17,15 +17,13 @@ Including another URLconf
 # notepadback/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from rest_framework_simplejwt.views import TokenRefreshView
+from usuarios.views import CustomTokenObtainPairView  # Importa tu vista personalizada
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('usuarios.urls')),
     path('notas/', include('notas.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),  # Usa tu vista personalizada aquí
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
